@@ -1,5 +1,25 @@
-<router-outlet></router-outlet>
-<h1>{{title}}</h1>
+<h1>Fun with AI</h1>
 
-<label>Enter prompt</label>
-<textarea></textarea>
+<p>Enter prompt</p>
+<textarea #promptText></textarea><br>
+<button type="button" (click)="sendText(promptText.value)">Submit</button>
+
+
+<h2>Responses</h2>
+
+<div>
+  <table *ngFor="let response of responseList">
+    <tr>
+      <td>Prompt:</td>
+      <td>{{response.prompt}}</td>
+    </tr>
+    <tr>
+      <td>Response:</td>
+      <td>{{response.output}}</td>
+    </tr>
+
+  </table>
+</div>
+<br>
+
+<span>{{output.choices[0].text}}</span>
