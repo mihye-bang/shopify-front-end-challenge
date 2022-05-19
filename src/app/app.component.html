@@ -1,26 +1,33 @@
-<h1>Fun with AI</h1>
+<div class="background">
+  <div class="inside-contents">
+    <h1>Fun with AI</h1>
 
-<p>Enter prompt</p>
-<textarea #promptText></textarea><br>
-<button type="button" (click)="sendText(promptText.value)">Submit</button>
+    <p>Enter prompt</p>
+    <textarea #promptText></textarea><br>
+    <button mat-raised-button color="primary" class="button-submit" (click)="sendText(promptText.value)">Submit</button>
+    <br>
 
-<h2>Responses</h2>
+    <h2>Responses</h2>
 
-<div>
-  <table *ngFor="let response of responseList">
-    <tr>
-      <td>Prompt:</td>
-      <td>{{response.request}}</td>
-    </tr>
-    <tr>
-      <td>Response:</td>
-      <td>{{response.response}}</td>
-    </tr>
+    <div *ngIf="responseList.length > 0; then showResponses else noResponse"></div>
 
-  </table>
+    <ng-template #showResponses>
+      <table *ngFor="let response of responseList">
+        <mat-card class="inside-mat-card">
+          <tr>
+            <td>Prompt:</td>
+            <td>{{response.request}}</td>
+          </tr>
+          <tr>
+            <td>Response:</td>
+            <td>{{response.response}}</td>
+          </tr>
+        </mat-card>
+      </table>
+    </ng-template>
+
+    <ng-template #noResponse>
+    </ng-template>
+
+  </div>
 </div>
-<br>
-
-<!--
-  <span>{{output.choices[0].text}}</span>
--->

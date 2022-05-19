@@ -1,0 +1,28 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.background {
+  padding: 30px;
+  margin: 100px 300px 100px 300px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  align-items: center;
+}
+
+.button-submit {
+  align-items: right;
+  display: table-cell;
+  width: 200px;
+}
+
+.inside-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.inside-mat-card {
+  margin: 20px 30px 20px 30px;
+}

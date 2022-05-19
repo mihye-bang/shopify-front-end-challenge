@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   promptText: any;
 
   responseList: any = [];
@@ -18,11 +18,6 @@ export class AppComponent implements OnInit {
     frequency_penalty: 0.0,
     presence_penalty: 0.0,
   };
-
-
-  ngOnInit(): void {
-
-  }
 
   sendText(promptText: string): void {
 
@@ -48,14 +43,5 @@ export class AppComponent implements OnInit {
           this.responseList.push(response);
         });
     });
-
-
   }
-
-
-  fetchData(): void {
-
-  }
-
-
 }
