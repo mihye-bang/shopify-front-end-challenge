@@ -4,22 +4,23 @@
 <textarea #promptText></textarea><br>
 <button type="button" (click)="sendText(promptText.value)">Submit</button>
 
-
 <h2>Responses</h2>
 
 <div>
   <table *ngFor="let response of responseList">
     <tr>
       <td>Prompt:</td>
-      <td>{{response.prompt}}</td>
+      <td>{{response.request}}</td>
     </tr>
     <tr>
       <td>Response:</td>
-      <td>{{response.output}}</td>
+      <td>{{response.response}}</td>
     </tr>
 
   </table>
 </div>
 <br>
 
-<span>{{output.choices[0].text}}</span>
+<!--
+  <span>{{output.choices[0].text}}</span>
+-->

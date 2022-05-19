@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  output: any;
-
   promptText: any;
+
   responseList: any = [];
 
   data: any = {
@@ -22,38 +21,39 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer  `,
-      },
-      body: JSON.stringify(this.data),
-    }).then(r => {
-      r.json()
-        .then(r => {
-          this.output = r;
-        });
-    });
+
   }
 
   sendText(promptText: string): void {
+
     this.data.prompt = promptText;
-    this.responseList.push(this.data);
-    console.log(this.responseList);
+
     fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer `,
+        Authorization: `Bearer ${atob("c2stQ1h4RXIzZWpkQzR1bWk0eEhWRHRUM0JsYmtGSkJNZWtxcDFTTFZGTlo1M2FOM2I4")}`,
       },
       body: JSON.stringify(this.data),
     }).then(r => {
       r.json()
         .then(r => {
-          this.output = r;
+          let response = {
+            response: "",
+            request: ""
+          };
+
+          response.response = r.choices[0].text;
+          response.request = promptText;
+          this.responseList.push(response);
         });
     });
+
+
+  }
+
+
+  fetchData(): void {
 
   }
 
